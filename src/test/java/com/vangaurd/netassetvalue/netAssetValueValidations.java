@@ -1,17 +1,11 @@
 package com.vangaurd.netassetvalue;
 
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import utils.Base;
-import utils.configurations;
+import resources.configurations;
 
-import javax.print.DocFlavor;
-import javax.swing.*;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static io.restassured.RestAssured.get;
 import static org.hamcrest.Matchers.contains;
@@ -35,17 +29,18 @@ public class netAssetValueValidations extends Base {
     }
 
     @Test
-    public void fetchPrice() {
+    public void extractNAVDetailsFromResponse() {
         Response response = get(configurations.navEndpoint).
                 then().
                         extract().response();
+
         List<List> prices = response.path("navPriceArray.price");
-        List<String> priceList = response.path("portId");
-        List<List> percentChange = response.path("navPriceArray.amountChange");
+        List<String> portId = response.path("portId");
+        List<List> percentChange = response.path("navPriceArray.percentChange");
 
         for (int i = 0; i < prices.size(); i++) {
             for(int j=0; j<prices.get(i).size();j++){
-                System.out.println("The daily price for Port Id "  + priceList.get(i) + " is AUD " + prices.get(i).get(j) + ".The percent change is "+ percentChange.get(i).get(j));
+                System.out.println("The daily price for Port Id "  + portId.get(i) + " is AUD " + prices.get(i).get(j) + ".The percent change is " + percentChange.get(i).get(j));
 
             }
         }

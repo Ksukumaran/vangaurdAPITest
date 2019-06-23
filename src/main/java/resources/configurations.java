@@ -1,4 +1,4 @@
-package utils;
+package resources;
 
 public interface configurations {
     //Endpoints to be added here
