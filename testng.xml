@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="NAV Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Selenium/netassetvalue">
+        <classes>
+            <class name="com.vangaurd.netassetvalue.netAssetValueValidations">
+                <methods>
+                    <include name="basicResponseChecks"/>
+                    <include name="fetchPrice"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
